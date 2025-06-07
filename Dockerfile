@@ -1,15 +1,15 @@
-# Use official Python image as base
-FROM python:3.9
+# Dockerfile
+
+FROM python:3.11-slim
 
 # Set working directory
 WORKDIR /app
 
-# Install dependencies
+# Copy files to container
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
-# Copy rest of the code
 COPY . .
 
-# Default command
+# Set default command
 CMD ["python", "app.py"]
