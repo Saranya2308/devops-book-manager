@@ -24,4 +24,14 @@ jobs:
 
     - name: Run Tests
       run: |
-        echo "No tests yet, just a placeholder"
+        pytest
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: false  # We’re only building locally for now
+        tags: my-python-app:latest
